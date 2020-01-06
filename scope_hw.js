@@ -111,3 +111,79 @@
 //SIX "The Murderer is Mr. White" because plot twist is within the function
 //and so when changeMurderer is called, it changes it to Green, then back to
 //White again.
+
+// let murderer = 'Professor Plum';
+//
+// const changeMurderer = function() {
+//   murderer = 'Mr. Green';
+//
+//   const plotTwist = function() {
+//     let murderer = 'Colonel Mustard';
+//
+//     const unexpectedOutcome = function() {
+//       murderer = 'Miss Scarlet';
+//     }
+//
+//     unexpectedOutcome();
+//   }
+//
+//   plotTwist();
+// }
+//
+// const declareMurderer = function() {
+//   return `The murderer is ${murderer}.`;
+// }
+//
+// changeMurderer();
+// const verdict = declareMurderer();
+// console.log(verdict);
+
+//SEVEN "The Murderer is Mr Green".  This is because it begins as Professor Plum
+//then  gets changed to Green with the changeMurderer function, then plotTwist
+//is called but the Colonel Mustard variable is a new variable scoped only within
+//the function, and so is not returned.  unexpectedOutcome is then called, but
+//this variable is not the same variable and so isn't changed.  So it remains
+//Green because he is the last globally defined variable, all others are block.
+
+const scenario = {
+  murderer: 'Mrs. Peacock',
+  room: 'Conservatory',
+  weapon: 'Lead Pipe'
+};
+
+const changeScenario = function() {
+  scenario.murderer = 'Mrs. Peacock';
+  scenario.room = 'Dining Room';
+
+  const plotTwist = function(room) {
+    if (scenario.room === room) {
+      scenario.murderer = 'Colonel Mustard';
+    }
+
+    const unexpectedOutcome = function(murderer) {
+      if (scenario.murderer === murderer) {
+        scenario.weapon = 'Candle Stick';
+      }
+    }
+
+    unexpectedOutcome('Colonel Mustard');
+  }
+
+  plotTwist('Dining Room');
+}
+
+const declareWeapon = function() {
+  return `The weapon is ${scenario.weapon}.`
+}
+
+changeScenario();
+const verdict = declareWeapon();
+console.log(verdict);
+
+//EIGHT "The weapon is candle stick".  The weapon begins as Lead Pipe, then the
+//changeScenario function is called.  This reassigns the attributes of murderer
+//and room, then runs the plotTwist function, feeding in 'Dining Room'.  Because
+//the room has been changed, it now fulfills the conditions of the if statement,
+//which changes Colonel Mustard successfully.  This then calls unexpectedOutcome,
+//feeding in Colonel Mustard as an argument.  This fulfills the second if statemnet
+//which then changes the weapon to 'candle stick'. 
