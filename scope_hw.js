@@ -11,7 +11,9 @@
 // const verdict = declareMurderer();
 // console.log(verdict);
 
-//ONE: "The Murderer is Miss Scarlet"
+//ONE: "The Murderer is Miss Scarlet".  The murderer attribute of the scenario
+//object is accessed and returned from the declaration function, assigned to
+//a variable, and then logged.
 
 // const murderer = 'Professor Plum';
 //
@@ -27,7 +29,8 @@
 // const verdict = declareMurderer();
 // console.log(verdict);
 
-//TWO "The Murderer is Mrs Peacock"
+//TWO "The Murderer is Mrs Peacock".  The murderer begins as Plum, then gets
+//changed to peacock, and called after the change.
 
 // let murderer = 'Professor Plum';
 //
@@ -42,7 +45,10 @@
 // const secondVerdict = `The murderer is ${murderer}.`;
 // console.log('Second Verdict: ', secondVerdict);
 
-//THREE "First Verdict: Mrs Peacock, Second Verdict: Professor Plum"
+//THREE "First Verdict: Mrs Peacock, Second Verdict: Professor Plum".  The first
+//verdict relies on the block scope of the murderer variable, which is Peacock.
+//The second one though, doesn't use the declareMurdere function, and so
+//refers to the original 'let', which is Plum.
 
 // let suspectOne = 'Miss Scarlet';
 // let suspectTwo = 'Professor Plum';
@@ -78,4 +84,30 @@
 // const verdict = declareWeapon();
 // console.log(verdict);
 
-//FIVE "The weapon is the Revolver"
+//FIVE "The weapon is the Revolver" The weapon begins as Candle Stick then  is
+//changed to revolver using the changeWeapon function, then called using the
+//declareWeapon function
+
+// let murderer = 'Colonel Mustard';
+//
+// const changeMurderer = function() {
+//   murderer = 'Mr. Green';
+//
+//   const plotTwist = function() {
+//     murderer = 'Mrs. White';
+//   }
+//
+//   plotTwist();
+// }
+//
+// const declareMurderer = function () {
+//   return `The murderer is ${murderer}.`;
+// }
+//
+// changeMurderer();
+// const verdict = declareMurderer();
+// console.log(verdict);
+
+//SIX "The Murderer is Mr. White" because plot twist is within the function
+//and so when changeMurderer is called, it changes it to Green, then back to
+//White again.
